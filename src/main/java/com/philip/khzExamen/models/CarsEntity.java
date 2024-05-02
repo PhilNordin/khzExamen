@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "cars")
-public class CarEntity {
+public class CarsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -24,8 +24,15 @@ public class CarEntity {
     private int rentalId;
     private int location; // ge varje location ett nummer ( sthlm 1, malmö 2, GBG 3, Umeå 4)
     private LocalDate maintenance;
+    private int doors;
+    private boolean terrain;
 
-    public CarEntity(long id, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, CarEntity car) {
+
+    public CarsEntity
+            (long id, String brand, String model, String description, int seats,
+             float mileage, int year, String color, String regNumber, boolean availability,
+             float rentalRate, int rentalId, int location, LocalDate maintenance, CarsEntity car,
+             int doors, boolean terrain ) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -41,6 +48,8 @@ public class CarEntity {
         this.location = location;
         this.maintenance = maintenance;
         this.car = car;
+        this.doors = doors;
+        this.terrain = terrain;
     }
 
 
@@ -156,18 +165,34 @@ public class CarEntity {
         this.maintenance = maintenance;
     }
 
-    public CarEntity getCar() {
+    public CarsEntity getCar() {
         return car;
     }
 
-    public void setCar(CarEntity car) {
+    public void setCar(CarsEntity car) {
         this.car = car;
+    }
+
+    public int getDoors() {
+        return doors;
+    }
+
+    public void setDoors(int doors) {
+        this.doors = doors;
+    }
+
+    public boolean isTerrain() {
+        return terrain;
+    }
+
+    public void setTerrain(boolean terrain) {
+        this.terrain = terrain;
     }
 
     @ManyToOne()
     @JoinColumn(name = "cars_id")
-    private CarEntity car;
+    private CarsEntity car;
 
-    public CarEntity() {}
+    public CarsEntity() {}
 
 }
