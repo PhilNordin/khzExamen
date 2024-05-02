@@ -1,16 +1,17 @@
 package com.philip.khzExamen.models;
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 import java.time.LocalDate;
 
+
 @Entity
-@Table(name = "cars")
-public class CarsEntity {
+public class CarEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String brand;
     private String model;
     private String description;
@@ -22,36 +23,10 @@ public class CarsEntity {
     private boolean availability;
     private float rentalRate;
     private int rentalId;
-    private int location; // ge varje location ett nummer ( sthlm 1, malmö 2, GBG 3, Umeå 4)
+    private int location; // Give each location a number (Stockholm 1, Malmö 2, Gothenburg 3, Umeå 4)
     private LocalDate maintenance;
     private int doors;
     private boolean terrain;
-
-
-    public CarsEntity
-            (long id, String brand, String model, String description, int seats,
-             float mileage, int year, String color, String regNumber, boolean availability,
-             float rentalRate, int rentalId, int location, LocalDate maintenance, CarsEntity car,
-             int doors, boolean terrain ) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.description = description;
-        this.seats = seats;
-        this.mileage = mileage;
-        this.year = year;
-        this.color = color;
-        this.regNumber = regNumber;
-        this.availability = availability;
-        this.rentalRate = rentalRate;
-        this.rentalId = rentalId;
-        this.location = location;
-        this.maintenance = maintenance;
-        this.car = car;
-        this.doors = doors;
-        this.terrain = terrain;
-    }
-
 
     public long getId() {
         return id;
@@ -165,14 +140,6 @@ public class CarsEntity {
         this.maintenance = maintenance;
     }
 
-    public CarsEntity getCar() {
-        return car;
-    }
-
-    public void setCar(CarsEntity car) {
-        this.car = car;
-    }
-
     public int getDoors() {
         return doors;
     }
@@ -188,11 +155,28 @@ public class CarsEntity {
     public void setTerrain(boolean terrain) {
         this.terrain = terrain;
     }
+// Constructors, getters, setters, and other methods
 
-    @ManyToOne()
-    @JoinColumn(name = "cars_id")
-    private CarsEntity car;
+    public CarEntity(long id, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.description = description;
+        this.seats = seats;
+        this.mileage = mileage;
+        this.year = year;
+        this.color = color;
+        this.regNumber = regNumber;
+        this.availability = availability;
+        this.rentalRate = rentalRate;
+        this.rentalId = rentalId;
+        this.location = location;
+        this.maintenance = maintenance;
+        this.doors = doors;
+        this.terrain = terrain;
+    }
 
-    public CarsEntity() {}
+    public CarEntity(){
 
+    }
 }
