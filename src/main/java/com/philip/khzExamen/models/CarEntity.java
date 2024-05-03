@@ -1,5 +1,6 @@
 package com.philip.khzExamen.models;
 
+import com.philip.khzExamen.repositories.CarRepository;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -179,4 +180,7 @@ public class CarEntity {
     public CarEntity(){
 
     }
+    
+    
+    
 }
