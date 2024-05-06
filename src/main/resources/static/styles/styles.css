@@ -1,0 +1,399 @@
+* {
+    box-sizing: border-box;
+
+  }
+
+.crt::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  
+}
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(8, 8, 8, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.crt {
+  text-align: center;
+  margin: 5%;
+  padding: 2%;
+  width:auto;
+  height: 100%;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  letter-spacing: 0.1em;
+  font-size: 24px;
+  -webkit-font-smoothing: none;
+  line-height: 1.2;
+}
+
+.command {
+  background-color: transparent;
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+  border: none;
+  border-style: solid;
+  outline: none;
+  box-shadow: none;
+  letter-spacing: 0.1em;
+  font-size: 24px;
+  -webkit-font-smoothing: none;
+  line-height: 1.2;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  width: 500px;
+  margin: 40px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.tableBody {
+
+  border-style: solid;
+  color: rgb(50, 255, 0);
+
+
+}
+
+a:link { 
+  text-decoration: none; 
+} 
+a:visited { 
+  text-decoration: none; 
+  color: rgb(50, 255, 0);
+
+} 
+a:hover { 
+  text-decoration: none; 
+  background-color: rgb(178, 229, 166);
+} 
+a:active { 
+  text-decoration: none; 
+}
+/* Style the header */
+.header {
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+  }
+  
+  /* Clear floats after the header */
+  .header:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .navbar {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .back-button {
+    color: rgb(50, 255, 0);
+    font-family: "VT323", monospace;
+    border-style: solid;
+    padding: 3px;
+
+  }
+
+  .h1 {
+    display: flex;
+    width: auto;
+    justify-content: center;
+    
+  }
+  .td {
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-color: rgb(50, 255, 0);
+    align-self: center;
+    margin: 10px;
+  }
+
+  .taskTable {
+    display:block;
+    margin-left:auto;
+    margin-right: auto;
+    width: auto;
+
+    border-radius: 5px;
+
+  }
+
+  th {
+ font-size:xx-large;
+
+  }
+  .cellStyle {
+  margin: 10px;
+  min-height: 30px;
+
+    border-style: solid;
+  border-color:rgb(50, 255, 0);
+
+  }
+
+  .editCell {
+    display: flex;
+    height: auto;
+    width: auto;
+    align-items: center;
+  }
+
+  #editButton {
+    margin:10px;
+  
+      border-radius: 25px;
+      border-style: solid;
+      border-color:rgb(50, 255, 0);
+      padding: 3px;
+  
+      }
+  
+  
+  #editButton :hover{
+  background-color: rgb(232, 123, 125);
+}
+  
+  #removeButton {
+    border-radius: 50px;
+    padding: 3px;
+    border-style: solid;
+    border-color: red;
+    color: red;
+    text-align: center;
+  }
+  
+  
+  #removeButton :hover{
+    background-color: rgb(176, 113, 113);
+    
+    }
+
+ 
+  #editButton {
+  margin:20px;
+
+    border-radius: 25px;
+    border-style: solid;
+    border-color:rgb(50, 255, 0);
+    padding: 1px;
+
+    }
+  #editButton {
+  margin:20px;
+
+    border-radius: 25px;
+    border-style: solid;
+    border-color:rgb(50, 255, 0);
+    padding: 1px;
+
+    }
+
+.titles {
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+  margin-bottom: 0;
+}
+.ul {
+  align-content: center;
+}
+
+ul li {
+  text-align: center;
+  display: inline-block;
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+  position: relative;
+  font-size: larger;
+  border:rgb(50, 255, 0);
+  border-style: solid;
+  border-radius: 25px;
+  padding:10px;
+  list-style: none;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.li {
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+  position: relative;
+}
+
+/* Remove margins and padding from the list */
+ol {
+  margin: 0;
+  padding: 10;
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+}
+
+/* Style the list items */
+ol li {
+  cursor: pointer;
+  padding: 12px 38px 12px 0px;
+  font-size: 14px;
+  transition: 0.2s;
+  position: relative;
+}
+.login-top{
+  width: auto;
+  height: auto;
+  justify-content: center;
+  display: inline-flex;
+}
+
+.li:hover{
+  background-color: rgb(178, 229, 166);
+
+}
+ul li:hover{
+  background-color: rgb(178, 229, 166);
+  border-style: solid;
+
+
+}
+.login-button {
+  font-family: "VT323", monospace;
+  border-style: solid;
+  border-color: rgb(50, 255, 0);
+  font-weight: 600;
+  font-size: larger;
+  background-color: transparent;
+  width: 100px;
+  height: 60px;
+  color:rgb(50, 255, 0); 
+  margin-left: 5%;
+}
+
+.reg-button {
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  border-style: solid;
+  border-color: rgb(50, 255, 0);
+  font-weight: 600;
+  font-size: larger;
+  background-color: transparent;
+  width: 150px;
+  height: 60px;
+  color:rgb(50, 255, 0); 
+  margin-left: 5%;
+  
+}
+
+.addBtn {
+  color: rgb(50, 255, 0);
+  font-family: "VT323", monospace;
+  border-style: solid;
+  border-color: rgb(50, 255, 0);
+  cursor: pointer;
+  font-weight: 600;
+  display: block;
+  padding: 10px;
+  width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 70px;
+  margin-top: 5px;
+  border-radius: 5px;
+
+}
+
+.addBtn:hover {
+  background-color: rgb(178, 229, 166);
+}
+
+
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 12px 12px 12px;
+
+}
+
+.close:hover {
+
+  background-color: #e6847d;
+  color: white;
+  border-radius: 5px;
+}
+
+.listContainer {
+  padding: 3%;
+  border-style: solid;
+  border-color: rgb(50, 255, 0);
+  border-radius: 5px;
+
+}
+
+.inputContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+}
+
+.postTodo{
+        size: 50px 20px 20px 50px;
+        color: rgb(50, 255, 0);
+        background-color: transparent;
+        font-family: "VT323", monospace;
+        font-size: large;
+        border-style: solid;
+        border-color: rgb(50, 255, 0);
+        cursor: pointer;
+        border-radius: 5px;
+        padding: 10px;
+        font-weight: 600;
+        margin: 15px 0px 10px 0px;
+        margin-top: 20px;
+      }
+      
+      .postTodo:hover {
+        background-color: rgb(178, 229, 166);
+      }
+
+#postDiv {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+
+}

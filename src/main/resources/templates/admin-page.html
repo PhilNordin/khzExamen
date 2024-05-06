@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+    <title>My Tasks</title>
+</head>
+<body class="crt">
+<h1>My Tasks</h1>
+<table class="taskTable">
+    <thead class="table">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+    </tr>
+    <br>
+    </thead>
+    <br>
+    <tbody class ="tableBody">
+
+    <!-- Iterate through the list of tasks -->
+    <tr th:each="task : ${userTasks}">
+        <!-- Access task properties -->
+        <td class="cellStyle" th:text="${order.id}"></td>
+        <td class="cellStyle" th:text="${order.title}"></td>
+        <td class="cellStyle" colspan="3" th:text="${task.description}"></td>
+        <!-- Add a button to edit the task -->
+        <td class="editCell">
+
+            <a id="editButton" th:href="@{/edit-task(taskId=${task.id})}">edit</a>
+            <a id="removeButton" th:href="@{/delete-task(taskId=${task.id})}">x</a>
+        </td>
+    </tr>
+
+    <tr th:if="${#lists.isEmpty(userTasks)}">
+        <br>
+        <td colspan="3">No tasks found</td>
+    </tr>
+    </tbody>
+</table>
+<ul>
+    <li>
+        <a class="" th:href="@{/task}">create task</a>
+    </li>
+    <!--    <li>-->
+    <!--        <a class="" th:href="@{/edit-task}">edit task</a>-->
+    <!--    </li>-->
+</ul>
+
+<br>
+<a class="postTodo" th:href="@{/}"> < </a>
+
+</body>
+</html>
