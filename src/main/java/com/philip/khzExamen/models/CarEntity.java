@@ -4,14 +4,18 @@ import com.philip.khzExamen.repositories.CarRepository;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 
 @Entity
 public class CarEntity {
 
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private long id;
+
+
 
     private String brand;
     private String model;
@@ -28,6 +32,32 @@ public class CarEntity {
     private LocalDate maintenance;
     private int doors;
     private boolean terrain;
+
+
+    public CarEntity(long id, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
+        this.id = id;
+        this.brand = brand;
+        this.model = model;
+        this.description = description;
+        this.seats = seats;
+        this.mileage = mileage;
+        this.year = year;
+        this.color = color;
+        this.regNumber = regNumber;
+        this.availability = availability;
+        this.rentalRate = rentalRate;
+        this.rentalId = rentalId;
+        this.location = location;
+        this.maintenance = maintenance;
+        this.doors = doors;
+        this.terrain = terrain;
+    }
+
+    public CarEntity(){
+
+    }
+
+
 
     public long getId() {
         return id;
@@ -158,29 +188,5 @@ public class CarEntity {
     }
 // Constructors, getters, setters, and other methods
 
-    public CarEntity(long id, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.description = description;
-        this.seats = seats;
-        this.mileage = mileage;
-        this.year = year;
-        this.color = color;
-        this.regNumber = regNumber;
-        this.availability = availability;
-        this.rentalRate = rentalRate;
-        this.rentalId = rentalId;
-        this.location = location;
-        this.maintenance = maintenance;
-        this.doors = doors;
-        this.terrain = terrain;
-    }
-
-    public CarEntity(){
-
-    }
-    
-    
     
 }
