@@ -24,8 +24,8 @@
     <!-- Iterate through the list of tasks -->
     <tr th:each="task : ${userTasks}">
         <!-- Access task properties -->
-        <td class="cellStyle" th:text="${order.id}"></td>
-        <td class="cellStyle" th:text="${order.title}"></td>
+        <td class="cellStyle" th:text="${task.id}"></td>
+        <td class="cellStyle" th:text="${task.title}"></td>
         <td class="cellStyle" colspan="3" th:text="${task.description}"></td>
         <!-- Add a button to edit the task -->
         <td class="editCell">
