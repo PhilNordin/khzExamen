@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Order</title>
+    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+    <script th:src="@{static/js/script.js}"></script>
+</head>
+<body class="crt">
+
+<div>
+    <h1>Create Order</h1>
+
+    <form method="post" th:action="@{/create}" th:object="${order}">
+
+        <label for="order">Title:</label>
+        <br>
+        <input type="text" class="command" th:field="*{title}" placeholder="title..." id="order" autofocus>
+        <br>
+
+        <label for="car">Car:</label>
+        <br>
+        <input type="text" class="command" th:field="*{car}" rows="4" cols="50" placeholder="car..." id="car" autofocus>
+        <br>
+
+        <button onclick="newOrderAlert()" class="postTodo" type="submit"> Create Order </button>
+
+        <!-- Show ANY error in the form -->
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li th:each="error : ${#fields.allErrors()}" th:text="${error}">
+
+                </li>
+            </ul>
+        </div>
+
+    </form>
+
+</div>
+<br>
+<a class="postTodo" th:href="@{/}"> < </a>
+
+</body>
+</html>

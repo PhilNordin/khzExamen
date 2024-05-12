@@ -1,11 +1,7 @@
 package com.philip.khzExamen.models.Entities;
 
-import com.philip.khzExamen.repositories.CarRepository;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
-import java.util.UUID;
-
 
 @Entity
 public class CarEntity {
@@ -13,8 +9,6 @@ public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-
 
     private String brand;
     private String model;
@@ -27,14 +21,18 @@ public class CarEntity {
     private boolean availability;
     private float rentalRate;
     private int rentalId;
-    private int location; // Give each location a number (Stockholm 1, Malmö 2, Gothenburg 3, Umeå 4)
+    private int location;
     private LocalDate maintenance;
     private int doors;
     private boolean terrain;
+    private String type;
+    private int capacity;
 
 
-    public CarEntity(long id, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
+    public CarEntity(long id, String type, int capacity, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
         this.id = id;
+        this.capacity = capacity;
+        this.type = type;
         this.brand = brand;
         this.model = model;
         this.description = description;
@@ -52,11 +50,8 @@ public class CarEntity {
         this.terrain = terrain;
     }
 
-    public CarEntity(){
-
+    public CarEntity() {
     }
-
-
 
     public long getId() {
         return id;
@@ -185,7 +180,20 @@ public class CarEntity {
     public void setTerrain(boolean terrain) {
         this.terrain = terrain;
     }
-// Constructors, getters, setters, and other methods
 
-    
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
 }

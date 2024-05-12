@@ -1,14 +1,44 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+
+    <title>My Tasks</title>
 </head>
-<body>
-    <h1>BOKA BIL INSERT CALENDER AND CARS HERE </h1>
+<body class="crt">
+<h1>My Tasks</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Iterate through the list of orders-->
+    <tr th:each="order : ${userOrders}">
+        <!-- Access task properties -->
+        <td th:text="${order.title}"></td>
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.description}"></td>
+        <!-- Add a button to edit the task -->
+        <td>
+<!--            <a th:href="@{/edit-task(taskId=${task.id})}">Edit Task</a>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+<ul>
+    <li>
+        <a class="" th:href="@{/create-order}">create order</a>
+    </li>
+
+</ul>
+
+<br>
+<a class="postTodo" th:href="@{/}"> < </a>
 
 </body>
 </html>

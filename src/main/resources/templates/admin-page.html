@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
-    <title>My Tasks</title>
+    <link th:href="@{static/stylesheet/admin-styles.css}" rel="stylesheet" />
+    <script th:src="@{static/js/script.js}"></script>
+
+    <title>Admin</title>
 </head>
 <body class="crt">
-<h1>My Tasks</h1>
+<h1>Order list</h1>
 <table class="taskTable">
     <thead class="table">
     <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Description</th>
+        <th>Order id</th>
+        <th>Car id</th>
+        <th>Start date</th>
+        <th>End date</th>
     </tr>
     <br>
     </thead>
@@ -22,11 +25,12 @@
     <tbody class ="tableBody">
 
     <!-- Iterate through the list of tasks -->
-    <tr th:each="task : ${userTasks}">
-        <!-- Access task properties -->
-        <td class="cellStyle" th:text="${task.id}"></td>
-        <td class="cellStyle" th:text="${task.title}"></td>
-        <td class="cellStyle" colspan="3" th:text="${task.description}"></td>
+    <tr th:each="order : ${orderEntity}">
+        <!-- Access Order properties -->
+        <td class="cellStyle" th:text="${order.id}"></td>
+        <td class="cellStyle" th:text="${order.car_id}"></td>
+        <td class="cellStyle" th:text="${order.start_date}"></td>
+        <td class="cellStyle" th:text="${order.end_date}"></td>
         <!-- Add a button to edit the task -->
         <td class="editCell">
 
@@ -35,23 +39,23 @@
         </td>
     </tr>
 
-    <tr th:if="${#lists.isEmpty(userTasks)}">
+    <tr th:if="${#lists.isEmpty(userOrders)}">
         <br>
-        <td colspan="3">No tasks found</td>
+        <td colspan="3">No order found</td>
     </tr>
     </tbody>
 </table>
 <ul>
     <li>
-        <a class="" th:href="@{/task}">create task</a>
+        <a class="" th:href="@{/create-order}">Create order</a>
     </li>
-    <!--    <li>-->
-    <!--        <a class="" th:href="@{/edit-task}">edit task</a>-->
-    <!--    </li>-->
+        <li>
+            <a class="" th:href="@{/edit-order}">edit order</a>
+        </li>
 </ul>
 
 <br>
-<a class="postTodo" th:href="@{/}"> < </a>
+<a class="postTodo" th:href="@{/}"></a>
 
 </body>
 </html>

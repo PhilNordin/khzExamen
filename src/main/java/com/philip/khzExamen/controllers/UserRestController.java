@@ -89,7 +89,7 @@ public class UserRestController {
     }
 
     @GetMapping("/helloUser")
-    @PreAuthorize("hasRole('ROLE_USER')")
+    @PreAuthorize("hasAuthority('GET')")
     public ResponseEntity<String> sayHelloToUser() {
 
         return new ResponseEntity<>("Hello USER!", HttpStatus.ACCEPTED);

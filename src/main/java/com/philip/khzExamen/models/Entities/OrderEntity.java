@@ -1,8 +1,8 @@
 package com.philip.khzExamen.models.Entities;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 
+import java.time.LocalDate;
 
 @Entity
 public class OrderEntity {
@@ -87,7 +87,35 @@ public OrderEntity(){
         return active;
     }
 
+    public OrderEntity(long id, CarEntity car, CustomerEntity customer, UserEntity user, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
+        this.id = id;
+        this.car = car;
+        this.customer = customer;
+        this.user = user;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.totalPrice = totalPrice;
+        this.active = active;
+    }
+
     public void setActive(boolean active) {
         this.active = active;
     }
+
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
 }

@@ -9,18 +9,8 @@ public class AppPasswordConfig {
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder(10);     // Default is 10
-    }
 
-/*
-    public Pbkdf2PasswordEncoder test() {
-        return new Pbkdf2PasswordEncoder(
-                "",
-                0,
-                0,
-                0);
+        return new BCryptPasswordEncoder(20);
     }
-
- */
 
 }
