@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>login</title>
+  <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+  <script th:src="@{static/js/script.js}"></script>
+</head>
+<body class="crt">
+  <h1>Login</h1>
+
+<section class="login-top">
+  <br>
+  <form th:action="@{/login}" method="post">
+
+      <!-- name=""  Is VERY important... -->
+      <label for="username">username:</label>
+      <input class="command" name="username" placeholder="username..." type="text" id="username" required autofocus>
+    <br>
+      <label for="password">password:</label>
+      <input class="command" name="password" placeholder="password..." type="password" id="password" required>
+    <br>
+      <button class="postTodo" type="submit">LOGIN</button>
+      <div th:if="${param.error}">
+        <p class="text-danger">
+          [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+      </div>
+    </form>
+    <br>
+</section>
+<br>
+<section>
+  <br>
+<a class="postTodo" th:href="@{/}"> < </a>
+
+</section>
+
+</body>
+</html>

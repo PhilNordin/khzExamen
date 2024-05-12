@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.car-section {
+    width: auto;
+    height: auto;
+    justify-content: center;
+
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust the width as needed */
+    gap: 20px; /* Adjust the gap between grid items */
+}
+
+.grid-item {
+    overflow: hidden; /* Ensure images don't overflow */
+    border-radius: 8px; /* Optional: Add rounded corners to images */
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.car-section {
+    width: auto;
+    height: auto;
+    justify-content: center;
+
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    width: auto;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar {
+    height: 20vh;
+    background-color: rgb(30, 135, 228);
+    align-content: center;
+    border-style: solid;
+    border-color: black;
+}
+
+li {
+    font-size: larger;
+}
+
+a {
+font-size: xx-large;
+}

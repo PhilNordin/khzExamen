@@ -1,8 +1,6 @@
 package com.philip.khzExamen.controllers;
 
-import ch.qos.logback.core.model.Model;
-import com.philip.khzExamen.models.CarEntity;
-import com.philip.khzExamen.models.OrderEntity;
+import com.philip.khzExamen.models.Entities.OrderEntity;
 import com.philip.khzExamen.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

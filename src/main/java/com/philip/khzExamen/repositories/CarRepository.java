@@ -1,7 +1,6 @@
 package com.philip.khzExamen.repositories;
 
-import com.philip.khzExamen.models.CarEntity;
-import com.philip.khzExamen.service.CarService;
+import com.philip.khzExamen.models.Entities.CarEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

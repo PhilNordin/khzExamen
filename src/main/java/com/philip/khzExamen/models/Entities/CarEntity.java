@@ -1,4 +1,4 @@
-package com.philip.khzExamen.models;
+package com.philip.khzExamen.models.Entities;
 
 import com.philip.khzExamen.repositories.CarRepository;
 import jakarta.persistence.*;
@@ -10,9 +10,8 @@ import java.util.UUID;
 @Entity
 public class CarEntity {
 
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
 

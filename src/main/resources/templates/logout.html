@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Logout</title>
+    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+
+</head>
+<body class="crt">
+
+
+<div class="container-fluid text-center ">
+
+    <!-- IS IT A POST? -->
+    <p>DO YOU REALLY WANT TO LOGOUT? </p>
+
+    <form method="post" th:action="@{/perform_logout}" >
+        <input class="postTodo" type="submit"  value="Logout">
+    </form>
+<a class="postTodo" th:href="@{/}"> < </a>
+
+
+</div>
+
+</body>
+</html>

@@ -1,6 +1,6 @@
 package com.philip.khzExamen.controllers;
 
-import com.philip.khzExamen.models.CarEntity;
+import com.philip.khzExamen.models.Entities.CarEntity;
 import com.philip.khzExamen.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

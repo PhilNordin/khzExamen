@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+  <script th:src="@{static/js/script.js}"></script>
+
+
+</head>
+<body class="crt">
+
+<div>
+    <h1>Register new user</h1>
+    <form method="post" th:action="@{/register}" th:object="${userEntity}">
+        <label for="username">username:</label>
+        <input class ="command" type="text" th:field="*{username}" placeholder="username..." id="username" autofocus>
+        <br>
+        <label for="password">password:</label>
+        <input class ="command" type="password" th:field="*{password}" placeholder="password..." id="password">
+        <br>
+        <label for="roles">select role:</label>
+        <select class="postTodo" id="roles" name="roles" th:field="*{role}">
+            <option class="postTodo" th:each="role : ${roles}" th:value="${role.name()}" th:text="${role.name()}"></option>
+        </select>
+
+        <button onclick="newUserAlert()" class="postTodo" type="submit"> register </button>
+
+        <!-- IMPORTANT : Must be inside FORM ss-->
+        <p 	th:if="${#fields.hasErrors('username')}"
+              th:errorclass="error"
+              th:errors="*{username}">
+        </p>
+
+        <!-- Show MULTIPLE errors at once -->
+        <ul>
+            <li th:each="error : ${#fields.errors('password')}" th:text="${error}" class="error">
+        </ul>
+
+        <!-- Show ANY error in the form -->
+        <div th:if="${#fields.hasAnyErrors()}">
+            <ul>
+                <li th:each="error : ${#fields.allErrors()}" th:text="${error}">
+
+                </li>
+            </ul>
+        </div>
+
+    </form>
+
+
+
+<!--    <p>Debugging, don't mind this input! :)</p>-->
+<!--    <input name="username" >-->
+
+</div>
+<br>
+<a class="postTodo" th:href="@{/}"> < </a>
+
+
+</body>
+</html>

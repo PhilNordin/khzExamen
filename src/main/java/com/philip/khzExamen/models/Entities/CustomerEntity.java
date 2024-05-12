@@ -1,21 +1,23 @@
-package com.philip.khzExamen.models;
+package com.philip.khzExamen.models.Entities;
 
 import jakarta.persistence.*;
-import org.hibernate.query.Order;
+
+import java.util.List;
 
 @Entity
 @Table(name = "customer_entity")
 public class CustomerEntity {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @OneToOne
     @JoinColumn(name = "id")
     private OrderEntity order;
+    @OneToMany(mappedBy = "customer")
+    private List<OrderEntity> orders;
 
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    @Id
-    private Long customerId;
+
 
     @Column(name = "first_name")
     private String firstName;
@@ -39,9 +41,11 @@ public class CustomerEntity {
 
     }
 
-    public CustomerEntity(OrderEntity order, Long customerId, String firstName, String lastName, String phoneNumber, String personalNumber, String gender, String address) {
+
+
+    public CustomerEntity(OrderEntity order, Long id, String firstName, String lastName, String phoneNumber, String personalNumber, String gender, String address) {
         this.order = order;
-        this.customerId = customerId;
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -59,11 +63,11 @@ public class CustomerEntity {
     }
 
     public Long getCustomerId() {
-        return customerId;
+        return id;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setCustomerId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

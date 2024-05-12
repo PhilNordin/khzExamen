@@ -13,6 +13,7 @@ public enum Roles {
     ADMIN("GET_POST"),
     USER("GET");
 
+
     private final String permissions;
 
     Roles(String permissions) {

@@ -1,9 +1,8 @@
-package com.philip.khzExamen.models;
-
+package com.philip.khzExamen.models.Entities;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
+
 
 @Entity
 public class OrderEntity {
@@ -11,23 +10,27 @@ public class OrderEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private CarEntity car;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private CarEntity car;
+    @JoinColumn(name = "customer_id")
+    private CustomerEntity customer;
+    @ManyToOne()
+    @JoinColumn(name = "users_id")
+    private UserEntity user;
 
     private LocalDate startDate;
     private LocalDate endDate;
     private float totalPrice;
     private boolean active;
 
-    // Constructors, getters, setters, and other methods
+public OrderEntity(){
 
-    public OrderEntity(long id) {
-        this.id = id;
-    }
+}
 
+    // Constructors
     public OrderEntity(long id, OrderEntity order, CarEntity car, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
         this.car = car;
         this.id = id;
@@ -37,16 +40,8 @@ public class OrderEntity {
         this.active = active;
     }
 
-    // Getters and setters
 
-    public OrderEntity(long id, CarEntity car, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
-        this.id = id;
-        this.car = car;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.totalPrice = totalPrice;
-        this.active = active;
-    }
+    // Getters and setters
 
     public long getId() {
         return id;
