@@ -15,11 +15,13 @@ public class CarSortingService {
         this.carRepository = carRepository;
     }
 
-    public List<CarEntity> sortByCapacity(int capacity) {
+    public List<CarEntity> sortByCapacity(CarEntity capacity) {
         return carRepository.findByCapacity(capacity);
     }
 
     public List<CarEntity> sortByType(String type) {
         return carRepository.findByType(type);
     }
+
+
 }

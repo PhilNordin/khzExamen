@@ -23,7 +23,6 @@
         <input type="text" class="command" th:field="*{car}" rows="4" cols="50" placeholder="car..." id="car" autofocus>
         <br>
 
-        <button onclick="newOrderAlert()" class="postTodo" type="submit"> Create Order </button>
 
         <!-- Show ANY error in the form -->
         <div th:if="${#fields.hasAnyErrors()}">
@@ -35,6 +34,7 @@
         </div>
 
     </form>
+    <button onclick="newOrderAlert()" class="postTodo" type="submit"> Create Order </button>
 
 </div>
 <br>

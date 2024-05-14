@@ -18,14 +18,17 @@
     </thead>
     <tbody>
     <!-- Iterate through the list of orders-->
-    <tr th:each="cars : ${carEntity}">
+    <tr th:each="cars : ${cars}">
         <!-- Access task properties -->
         <td th:text="${cars.brand}"></td>
         <td th:text="${cars.id}"></td>
         <td th:text="${cars.model}"></td>
         <!-- Add a button to edit the task -->
         <td>
-<!--            <a th:href="@{/edit-task(taskId=${task.id})}">Edit Task</a>-->
+            <img th:src="${cars.image}" alt="Car Image" style="max-width: 300px; max-height: 300px;">
+        </td>
+        <td>
+            <!--            <a th:href="@{/edit-task(taskId=${task.id})}">Edit Task</a>-->
         </td>
     </tr>
     </tbody>

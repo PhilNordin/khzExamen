@@ -9,6 +9,8 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<CarEntity,Long> {
 
+
+
     List<CarEntity> findByBrand(String brand);
 
     List<CarEntity> findByModel(String model);
@@ -20,11 +22,13 @@ public interface CarRepository extends JpaRepository<CarEntity,Long> {
 
     List<CarEntity> findByColor(String color);
     List<CarEntity> findByType(String type);
-    List<CarEntity> findByCapacity(int capacity);
+    List<CarEntity> findByCapacity(CarEntity capacity);
 
 
+    /*
     List<CarEntity> sortByCapacity(int capacity);
-    List<CarEntity> sortByType(String type);
+
+     */
 
 
 

@@ -25,7 +25,7 @@
     <tbody class ="tableBody">
 
     <!-- Iterate through the list of tasks -->
-    <tr th:each="order : ${orderEntity}">
+    <tr th:each="order : ${OrderEntity}">
         <!-- Access Order properties -->
         <td class="cellStyle" th:text="${order.id}"></td>
         <td class="cellStyle" th:text="${order.car_id}"></td>
@@ -55,7 +55,7 @@
 </ul>
 
 <br>
-<a class="postTodo" th:href="@{/}"></a>
+<a class="postTodo" th:href="@{/home}"></a>
 
 </body>
 </html>

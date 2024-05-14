@@ -28,8 +28,13 @@ public class CarEntity {
     private String type;
     private int capacity;
 
+    private String image;
 
-    public CarEntity(long id, String type, int capacity, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
+
+
+
+
+    public CarEntity(String image, long id, String type, int capacity, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
         this.id = id;
         this.capacity = capacity;
         this.type = type;
@@ -48,10 +53,15 @@ public class CarEntity {
         this.maintenance = maintenance;
         this.doors = doors;
         this.terrain = terrain;
+        this.image = image;
+
     }
+
+
 
     public CarEntity() {
     }
+
 
     public long getId() {
         return id;
@@ -195,5 +205,13 @@ public class CarEntity {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
