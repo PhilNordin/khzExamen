@@ -12,6 +12,8 @@ public interface CarRepository extends JpaRepository<CarEntity,Long> {
 
 
     List<CarEntity> findByBrand(String brand);
+    List<CarEntity> findById(long id);
+
 
     List<CarEntity> findByModel(String model);
 

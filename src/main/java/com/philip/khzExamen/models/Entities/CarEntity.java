@@ -9,7 +9,6 @@ public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     private String brand;
     private String model;
     private String description;

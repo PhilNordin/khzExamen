@@ -2,37 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+    <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
 
-    <title>My orders</title>
+    <title>Car catalogue</title>
 </head>
-<body class="crt">
-<h1>My orders</h1>
+<body>
+<h1>Car catalogue</h1>
 <table>
     <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
+
     </thead>
-    <tbody>
-    <!-- Iterate through the list of orders-->
-    <tr th:each="cars : ${cars}">
-        <!-- Access task properties -->
-        <td th:text="${cars.brand}"></td>
+    <tbody class="table">
+
+    <!-- Iterate through list of cars-->
+    <tr class="grid-item" th:each="cars : ${cars}">
+        <td><img th:src="${cars.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;"></td>
+
+        <th>Car ID:</th>
         <td th:text="${cars.id}"></td>
+        <th>Brand:</th>
+        <td th:text="${cars.brand}"></td>
+        <th>Model:</th>
         <td th:text="${cars.model}"></td>
-        <!-- Add a button to edit the task -->
+        <th>Year:</th>
+        <td th:text="${cars.year}"></td>
+        <th>Color:</th>
+        <td th:text="${cars.color}"></td>
+        <th>Mileage:</th>
+        <td th:text="${cars.mileage}"></td>
+        <th>Terrain:</th>
+        <td th:text="${cars.terrain}"></td>
+
+
         <td>
-            <img th:src="${cars.image}" alt="Car Image" style="max-width: 300px; max-height: 300px;">
-        </td>
-        <td>
-            <!--            <a th:href="@{/edit-task(taskId=${task.id})}">Edit Task</a>-->
+                        <a th:href="@{/edit-car(carId=${cars.id})}">Edit car</a>
         </td>
     </tr>
     </tbody>
+
 </table>
+
 <ul>
     <li>
         <a class="" th:href="@{/create-order}">create order</a>

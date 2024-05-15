@@ -2,34 +2,49 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+    <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
 
-    <title>My orders</title>
+    <title>Order overview</title>
 </head>
-<body class="crt">
-<h1>My orders</h1>
+<body>
+<h1>Order overview</h1>
 <table>
     <thead>
-    <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
+
     </thead>
-    <tbody>
-    <!-- Iterate through the list of orders-->
-    <tr th:each="cars : ${carEntity}">
-        <!-- Access task properties -->
-        <td th:text="${cars.brand}"></td>
-        <td th:text="${cars.id}"></td>
-        <td th:text="${cars.model}"></td>
-        <!-- Add a button to edit the task -->
+    <tbody class="table">
+
+    <!-- Iterate through list of cars-->
+    <tr class="grid-item" th:each="orders : ${orders}">
+<!--        <td><img th:src="${cars.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;"></td>-->
+
+        <th>Order ID:</th>
+<!--        <td th:text="${order.id}"></td>-->
+        <th>Start date:</th>
+        <td th:text="${orders.startDate}"></td>
+        <th>End date:</th>
+        <td th:text="${orders.endDate}"></td>
+
+<!--        <th>Model:</th>-->
+<!--        <td th:text="${order.model}"></td>-->
+<!--        <th>Year:</th>-->
+<!--        <td th:text="${order.year}"></td>-->
+<!--        <th>Color:</th>-->
+<!--        <td th:text="${cars.color}"></td>-->
+<!--        <th>Mileage:</th>-->
+<!--        <td th:text="${cars.mileage}"></td>-->
+<!--        <th>Terrain:</th>-->
+<!--        <td th:text="${cars.terrain}"></td>-->
+
+
         <td>
-<!--            <a th:href="@{/edit-task(taskId=${task.id})}">Edit Task</a>-->
+            <a th:href="@{/edit-order(ordersId=${orders.id})}">Edit order</a>
         </td>
     </tr>
     </tbody>
+
 </table>
+
 <ul>
     <li>
         <a class="" th:href="@{/create-order}">create order</a>

@@ -1,5 +1,6 @@
 package com.philip.khzExamen.controllers;
 
+import com.philip.khzExamen.models.Entities.CarEntity;
 import com.philip.khzExamen.models.Entities.OrderEntity;
 import com.philip.khzExamen.models.Entities.UserEntity;
 import com.philip.khzExamen.repositories.OrderRepository;
@@ -32,12 +33,6 @@ public class OrderController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/order")
-    @ResponseBody
-    public List<OrderEntity> getAllOrders() {
-        return orderRepository.findAll();
-    }
-
 
     @GetMapping("/order-page") // Update the mapping endpoint
     public String showOrdersPage(OrderEntity orderEntity, Model model) { // Update method name and parameter names
@@ -68,5 +63,13 @@ public class OrderController {
         orderRepository.save(order);
 
         return "redirect:/create-order"; // Redirect to the tasks page after successful task creation
+    }
+
+    @GetMapping("/orders")
+    public String getAllOrders(Model model) {
+        List<OrderEntity> orders = orderRepository.findAll();
+        model.addAttribute("orders", orders);
+        model.addAttribute("orderEntity", new OrderEntity());
+        return "order-page";
     }
 }

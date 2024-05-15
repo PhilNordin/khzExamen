@@ -3,6 +3,8 @@
     padding: 0;
 }
 
+body
+
 
 .car-section {
     width: auto;
@@ -49,12 +51,49 @@
     align-content: center;
     border-style: solid;
     border-color: black;
+
+
 }
 
 li {
     font-size: larger;
 }
 
+
 a {
 font-size: xx-large;
 }
+
+.table {
+    display: block;
+    height: 100vh;
+    border-collapse: separate;
+    border-spacing: 0;
+    align-items: center;
+    justify-content:center;
+
+      }
+
+
+table, th, td {
+    border-collapse: collapse;
+  }
+  th, td {
+    border-top: 1px solid;
+
+
+    padding: 5px;
+    text-align: left;
+  }
+
+  @media only screen and (max-width: 768px) {
+      .grid-item {
+          width: calc(50% - 20px);
+      }
+  }
+
+  @media only screen and (max-width: 480px) {
+      .grid-item {
+          width: calc(100% - 20px);
+      }
+  }
