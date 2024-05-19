@@ -11,16 +11,6 @@ public interface CarRepository extends JpaRepository<CarEntity,Long> {
 
 
 
-    List<CarEntity> findByBrand(String brand);
-    List<CarEntity> findById(long id);
-
-
-    List<CarEntity> findByModel(String model);
-
-    List<CarEntity> findByAvailability(boolean availability);
-
-    List<CarEntity> findByLocation(int location);
-
 
     List<CarEntity> findByColor(String color);
     List<CarEntity> findByType(String type);

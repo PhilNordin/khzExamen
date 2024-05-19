@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Cars</title>
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
+</head>
+<body>
+<h1>Available Cars</h1>
+<div th:if="${not #lists.isEmpty(availableCars)}">
+    <ul>
+        <li th:each="car : ${availableCars}">
+            <span th:text="${car.brand} + ' ' + ${car.model} + ' - ' + ${car.color}"></span>
+        </li>
+    </ul>
+</div>
+<div th:if="${#lists.isEmpty(availableCars)}">
+    <p>No cars available for the selected dates and location.</p>
+</div>
+</body>
+</html>

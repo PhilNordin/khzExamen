@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
+
+    <title>Customer catalogue</title>
+</head>
+<body>
+<h1>Customer catalogue</h1>
+<table>
+    <thead>
+
+    </thead>
+    <tbody class="table">
+
+    <tr class="grid-item" th:each="customers : ${customers}">
+        <td><img th:src="${customers.image}" alt="Customer Image" style="max-width: 600px; max-height: 300px;"></td>
+
+        <th>First name:</th>
+        <td th:text="${customers.firstName}"></td>
+        <th>Last name:</th>
+        <td th:text="${customers.lastName}"></td>
+        <th>Gender:</th>
+        <td th:text="${customers.gender}"></td>
+        <th>Year:</th>
+        <td th:text="${customers.personalNumber}"></td>
+<!--        <th>Color:</th>-->
+<!--        <td th:text="${cars.color}"></td>-->
+<!--        <th>Mileage:</th>-->
+<!--        <td th:text="${cars.mileage}"></td>-->
+<!--        <th>Terrain:</th>-->
+<!--        <td th:text="${cars.terrain}"></td>-->
+
+
+        <td>
+            <a th:href="@{/edit-car(carId=${cars.id})}">Edit car</a>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+
+<ul>
+    <li>
+        <a class="" th:href="@{/create-order}">create order</a>
+    </li>
+
+</ul>
+
+<br>
+<a class="postTodo" th:href="@{/}"> < </a>
+
+</body>
+</html>

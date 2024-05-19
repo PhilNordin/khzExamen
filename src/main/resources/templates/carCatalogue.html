@@ -3,44 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
-
+    <link th:href="@{static/stylesheet/lightbox.css}" rel="stylesheet" />
     <title>Car catalogue</title>
 </head>
 <body>
 <h1>Car catalogue</h1>
-<table>
-    <thead>
+<div class="grid-container">
+    <!-- Iterate through list of cars -->
+    <div class="card" th:each="car : ${cars}">
+        <img th:src="${car.image}" alt="Car Image" style="max-width: 100%; max-height: 300px;">
+<!--        <img th:src="${car.frontImg}" alt="Car Image" style="max-width: 100%; max-height: 300px;">-->
 
-    </thead>
-    <tbody class="table">
-
-    <!-- Iterate through list of cars-->
-    <tr class="grid-item" th:each="cars : ${cars}">
-        <td><img th:src="${cars.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;"></td>
-
-        <th>Car ID:</th>
-        <td th:text="${cars.id}"></td>
-        <th>Brand:</th>
-        <td th:text="${cars.brand}"></td>
-        <th>Model:</th>
-        <td th:text="${cars.model}"></td>
-        <th>Year:</th>
-        <td th:text="${cars.year}"></td>
-        <th>Color:</th>
-        <td th:text="${cars.color}"></td>
-        <th>Mileage:</th>
-        <td th:text="${cars.mileage}"></td>
-        <th>Terrain:</th>
-        <td th:text="${cars.terrain}"></td>
-
-
-        <td>
-                        <a th:href="@{/edit-car(carId=${cars.id})}">Edit car</a>
-        </td>
-    </tr>
-    </tbody>
-
-</table>
+        <div class="card-content">
+            <table>
+                <tr>
+                    <th>Car ID:</th>
+                    <td th:text="${car.id}"></td>
+                </tr>
+                <tr>
+                    <th>Brand:</th>
+                    <td th:text="${car.brand}"></td>
+                </tr>
+                <tr>
+                    <th>Model:</th>
+                    <td th:text="${car.model}"></td>
+                </tr>
+                <tr>
+                    <th>Year:</th>
+                    <td th:text="${car.year}"></td>
+                </tr>
+                <tr>
+                    <th>Color:</th>
+                    <td th:text="${car.color}"></td>
+                </tr>
+                <tr>
+                    <th>Mileage:</th>
+                    <td th:text="${car.mileage}"></td>
+                </tr>
+                <tr>
+                    <th>Terrain:</th>
+                    <td th:text="${car.terrain}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="card-actions">
+            <a th:href="@{/edit-car(carId=${car.id})}">Edit Car</a>
+        </div>
+    </div>
+</div>
 
 <ul>
     <li>
@@ -51,6 +61,6 @@
 
 <br>
 <a class="postTodo" th:href="@{/}"> < </a>
-
+<script th:src="@{static/stylesheet/lightbox.js}"></script>
 </body>
 </html>

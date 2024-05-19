@@ -26,14 +26,94 @@ public class CarEntity {
     private boolean terrain;
     private String type;
     private int capacity;
+    private LocalDate availabilityStartDate;
 
+    public CarEntity(LocalDate availabilityStartDate, LocalDate availabilityEndDate) {
+        this.availabilityStartDate = availabilityStartDate;
+        this.availabilityEndDate = availabilityEndDate;
+    }
+
+    public LocalDate getAvailabilityStartDate() {
+        return availabilityStartDate;
+    }
+
+    public void setAvailabilityStartDate(LocalDate availabilityStartDate) {
+        this.availabilityStartDate = availabilityStartDate;
+    }
+
+    public LocalDate getAvailabilityEndDate() {
+        return availabilityEndDate;
+    }
+
+    public void setAvailabilityEndDate(LocalDate availabilityEndDate) {
+        this.availabilityEndDate = availabilityEndDate;
+    }
+
+    private LocalDate availabilityEndDate;
     private String image;
+    private String sideFrontImg;
+    private String frontImg;
+
+    public CarEntity(String sideFrontImg, String frontImg, String sideImg, String sideBackImg, String insideImg) {
+        this.sideFrontImg = sideFrontImg;
+        this.frontImg = frontImg;
+        this.sideImg = sideImg;
+        this.sideBackImg = sideBackImg;
+        this.insideImg = insideImg;
+    }
+
+    private String sideImg;
+    private String sideBackImg;
+
+    public String getSideFrontImg() {
+        return sideFrontImg;
+    }
+
+    public void setSideFrontImg(String sideFrontImg) {
+        this.sideFrontImg = sideFrontImg;
+    }
+
+    public String getFrontImg() {
+        return frontImg;
+    }
+
+    public void setFrontImg(String frontImg) {
+        this.frontImg = frontImg;
+    }
+
+    public String getSideImg() {
+        return sideImg;
+    }
+
+    public void setSideImg(String sideImg) {
+        this.sideImg = sideImg;
+    }
+
+    public String getSideBackImg() {
+        return sideBackImg;
+    }
+
+    public void setSideBackImg(String sideBackImg) {
+        this.sideBackImg = sideBackImg;
+    }
+
+    public String getInsideImg() {
+        return insideImg;
+    }
+
+    public void setInsideImg(String insideImg) {
+        this.insideImg = insideImg;
+    }
+
+    private String insideImg;
 
 
 
 
 
-    public CarEntity(String image, long id, String type, int capacity, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
+
+
+    public CarEntity(String sideFrontImg, String frontImg, String sideImg, String sideBackImg, String insideImg, String image, long id, String type, int capacity, String brand, String model, String description, int seats, float mileage, int year, String color, String regNumber, boolean availability, float rentalRate, int rentalId, int location, LocalDate maintenance, int doors, boolean terrain) {
         this.id = id;
         this.capacity = capacity;
         this.type = type;
@@ -53,6 +133,11 @@ public class CarEntity {
         this.doors = doors;
         this.terrain = terrain;
         this.image = image;
+        this.sideFrontImg = sideFrontImg;
+        this.frontImg = frontImg;
+        this.sideImg = sideImg;
+        this.sideBackImg = sideBackImg;
+        this.insideImg = insideImg;
 
     }
 
