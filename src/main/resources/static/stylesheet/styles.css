@@ -134,8 +134,10 @@
 }
 
 button {
+    align-self: center;
     background-color: #4CAF50;
     color: white;
+    height: 10vh;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -145,6 +147,12 @@ button {
     margin-top: 10px;
     cursor: pointer;
     border-radius: 4px;
+
+}
+
+input {
+    font-size: larger;
+    text-align: center;
 }
 
 button:hover {
@@ -185,9 +193,7 @@ table, th, td {
   ul {
     list-style: none;
   }
-  input {
-    border-style: none;
-  }
+
   @media only screen and (max-width: 768px) {
       .grid-item {
           width: calc(50% - 20px);

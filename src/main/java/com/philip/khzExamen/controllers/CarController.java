@@ -24,22 +24,29 @@ public class CarController {
         this.carSortingService = carSortingService;
     }
 
-//    @PostMapping("/submit-rental")
-//    public String checkAvailability(@RequestParam("startDate") String startDate,
-//                                    @RequestParam("endDate") String endDate,
+    @PostMapping("/submit-rental")
+    public String checkAvailability(@RequestParam("startDate") String startDate,
+                                    @RequestParam("endDate") String endDate,
 //                                    @RequestParam("pickup_city") String pickupCity,
 //                                    @RequestParam("return_city") String returnCity,
-//                                    Model model) {
-//
-//        LocalDate start = LocalDate.parse(startDate);
-//        LocalDate end = LocalDate.parse(endDate);
+                                    Model model) {
+
+        LocalDate start = LocalDate.parse(startDate);
+        LocalDate end = LocalDate.parse(endDate);
 //        int location = mapCityToLocation(pickupCity); // Implement this method to map city names to location IDs
-//
+
 //        List<CarEntity> availableCars = carSortingService.checkAvailability(start, end, location);
-//        model.addAttribute("availableCars", availableCars);
-//
-//        return "available-cars"; // A view name to display the available cars
-//    }
+        List<CarEntity> availableCars = carSortingService.checkAvailability(start, end);
+
+        if (availableCars.isEmpty()) {
+            return "index"; // A view name to redirect to the home page
+        }
+
+        model.addAttribute("availableCars", availableCars);
+
+        return "available-cars"; // A view name to display the available cars
+    }
+
 
     private int mapCityToLocation(String city) {
         switch (city.toLowerCase()) {
