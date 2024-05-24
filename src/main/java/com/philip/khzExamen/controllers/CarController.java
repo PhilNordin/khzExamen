@@ -27,15 +27,15 @@ public class CarController {
     @PostMapping("/submit-rental")
     public String checkAvailability(@RequestParam("startDate") String startDate,
                                     @RequestParam("endDate") String endDate,
-//                                    @RequestParam("pickup_city") String pickupCity,
-//                                    @RequestParam("return_city") String returnCity,
+//                                    @RequestParam("pickup_city") String pickupCity,  - Uncomment for use of location choice
+//                                    @RequestParam("return_city") String returnCity,  - Uncomment for use of location choice
                                     Model model) {
 
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
 //        int location = mapCityToLocation(pickupCity); // Implement this method to map city names to location IDs
 
-//        List<CarEntity> availableCars = carSortingService.checkAvailability(start, end, location);
+//        List<CarEntity> availableCars = carSortingService.checkAvailability(start, end, location);  - Uncomment for use of location choice
         List<CarEntity> availableCars = carSortingService.checkAvailability(start, end);
 
         if (availableCars.isEmpty()) {

@@ -19,11 +19,6 @@ public class CustomerController {
     public CustomerController(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-//    @GetMapping("/customers")
-//    @ResponseBody
-//    public List<CustomerEntity> getAllCustomers() {
-//        return customerRepository.findAll();
-//    }
 
     @GetMapping("/customers")
     public String getAllCustomers(Model model) {

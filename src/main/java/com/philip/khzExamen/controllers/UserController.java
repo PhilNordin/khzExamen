@@ -39,7 +39,6 @@ public class UserController {
             Roles roles
     ) {
 
-        // Check FOR @Valid Errors
         if (result.hasErrors()) {
             return "register";
         }

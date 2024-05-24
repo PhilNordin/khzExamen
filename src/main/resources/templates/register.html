@@ -28,10 +28,10 @@
             <input class="command" type="password" th:field="*{password}" placeholder="password..." id="password">
             <br>
             <label for="roles">Select role:</label>
-            <select class="postTodo" id="roles" name="roles" th:field="*{role}">
-                <option class="postTodo" th:each="role : ${roles}" th:value="${role.name()}" th:text="${role.name()}"></option>
+            <select class="post" id="roles" name="roles" th:field="*{role}">
+                <option class="post" th:each="role : ${roles}" th:value="${role.name()}" th:text="${role.name()}"></option>
             </select>
-            <button class="postTodo" type="submit">Register</button>
+            <button class="post" type="submit">Register</button>
 
             <!-- Display success message -->
             <p th:if="${successMessage}" th:text="${successMessage}" class="success-message"></p>

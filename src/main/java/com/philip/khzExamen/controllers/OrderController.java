@@ -62,7 +62,7 @@ public class OrderController {
         order.setUser(currentUser);
         orderRepository.save(order);
 
-        return "redirect:/create-order"; // Redirect to the tasks page after successful task creation
+        return "redirect:/create-order"; // Redirect to the order page after successful order creation
     }
 
     @GetMapping("/orders")

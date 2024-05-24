@@ -28,7 +28,7 @@ public class CarSortingService {
         return carRepository.findByType(type);
     }
 
-    //    public List<CarEntity> checkAvailability(LocalDate startDate, LocalDate endDate, int location) {
+    //    public List<CarEntity> checkAvailability(LocalDate startDate, LocalDate endDate, int location) {  - uncomment and replace for use of location choice
 //        return carRepository.findAvailableCars(startDate, endDate, location);
 //    }
     public List<CarEntity> checkAvailability(LocalDate startDate, LocalDate endDate) {
