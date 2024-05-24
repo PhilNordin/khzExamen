@@ -27,24 +27,53 @@ public class CarController {
     @PostMapping("/submit-rental")
     public String checkAvailability(@RequestParam("startDate") String startDate,
                                     @RequestParam("endDate") String endDate,
-//                                    @RequestParam("pickup_city") String pickupCity,  - Uncomment for use of location choice
-//                                    @RequestParam("return_city") String returnCity,  - Uncomment for use of location choice
+                                    // @RequestParam("pickup_city") String pickupCity,  // Uncomment for use of location choice
+                                    // @RequestParam("return_city") String returnCity,  // Uncomment for use of location choice
                                     Model model) {
 
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
-//        int location = mapCityToLocation(pickupCity); // Implement this method to map city names to location IDs
+        // int location = mapCityToLocation(pickupCity); // Implement this method to map city names to location IDs
 
-//        List<CarEntity> availableCars = carSortingService.checkAvailability(start, end, location);  - Uncomment for use of location choice
+        // List<CarEntity> availableCars = carSortingService.checkAvailability(start, end, location);  // Uncomment for use of location choice
         List<CarEntity> availableCars = carSortingService.checkAvailability(start, end);
 
         if (availableCars.isEmpty()) {
-            return "index"; // A view name to redirect to the home page
+            model.addAttribute("noCarsAvailable", true);
+            return "index";
         }
 
         model.addAttribute("availableCars", availableCars);
 
-        return "available-cars"; // A view name to display the available cars
+        return "available-cars";
+    }
+
+
+    @GetMapping("/order-form")
+    public String showOrderForm(@RequestParam("carId") Long carId, Model model) {
+        CarEntity car = carRepository.findById(carId).orElse(null);
+        if (car == null) {
+            return "error-page";
+        }
+        model.addAttribute("car", car);
+        return "order-form";
+    }
+
+    @PostMapping("/submit-order")
+    public String submitOrder(@RequestParam("carId") Long carId,
+                              @RequestParam("customerName") String customerName,
+                              @RequestParam("customerEmail") String customerEmail,
+                              Model model) {
+        CarEntity car = carRepository.findById(carId).orElse(null);
+        if (car == null) {
+            return "error-page"; // Handle car not found
+        }
+
+        //databas
+
+        model.addAttribute("car", car);
+        model.addAttribute("customerName", customerName);
+        return "order-success";
     }
 
 

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Order Success</title>
+  <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
+</head>
+<body>
+<h1>Order Successful</h1>
+<p>Thank you, <span th:text="${customerName}"></span>, for ordering the <span th:text="${car.brand} + ' ' + ${car.model}"></span>.</p>
+<p>We will contact you soon at <span th:text="${customerEmail}"></span> with further details.</p>
+</body>
+</html>

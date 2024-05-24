@@ -17,7 +17,8 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private CustomerEntity customer;
-    @ManyToOne()
+
+    @ManyToOne
     @JoinColumn(name = "users_id")
     private UserEntity user;
 
@@ -26,22 +27,18 @@ public class OrderEntity {
     private float totalPrice;
     private boolean active;
 
-public OrderEntity(){
+    // Default
+    public OrderEntity() {}
 
-}
-
-    // Constructors
-    public OrderEntity(long id, OrderEntity order, CarEntity car, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
+    public OrderEntity(CarEntity car, CustomerEntity customer, UserEntity user, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
         this.car = car;
-        this.id = id;
+        this.customer = customer;
+        this.user = user;
         this.startDate = startDate;
         this.endDate = endDate;
         this.totalPrice = totalPrice;
         this.active = active;
     }
-
-
-    // Getters and setters
 
     public long getId() {
         return id;
