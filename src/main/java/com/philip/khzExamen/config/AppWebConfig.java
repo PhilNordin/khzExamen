@@ -1,5 +1,6 @@
 package com.philip.khzExamen.config;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -9,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 public class AppWebConfig implements WebMvcConfigurer {
     @Override
-    public void addViewControllers(ViewControllerRegistry registry){
+    public void addViewControllers(@NotNull ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/home").setViewName("index");
         registry.addViewController("/login").setViewName("login");

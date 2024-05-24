@@ -8,22 +8,40 @@
 
 </head>
 <body>
-<h1>Available Cars</h1>
-<div th:if="${not #lists.isEmpty(availableCars)}">
-    <ul>
-        <li th:each="car : ${availableCars}">
-            <td>
-<!--                <td><img th:src="${cars.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;"></td>-->
+<nav class="navbar">
+    <h2>AVAILABLE CARS</h2>
 
-            </td>
-            <span th:text="${car.brand} + ' ' + ${car.model} + ' - ' + ${car.color}"></span>
-            <form th:action="@{/order-form}" method="get">
-                <input type="hidden" th:name="carId" th:value="${car.id}"/>
-                <button type="submit">Book this car</button>
-            </form>
-        </li>
-    </ul>
-</div>
+    <a href="/">
+        <img src="../static/images/khzlogo.PNG" th:href="@{/}" class="khzlogo" alt="">
+    </a>
+
+
+
+</nav>
+
+<section class="form-section">
+
+    <div th:if="${not #lists.isEmpty(availableCars)}">
+
+        <ul class="carCards">
+            <li th:each="car : ${availableCars}">
+                <img th:src="${car.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;">
+                <p>Car brand:</p>
+                <span th:text="${car.brand}"></span>
+                <p>Car model:</p>
+                <span th:text="${car.model}"></span>
+                <p>Car color:</p>
+                <span th:text="${car.color}"></span>
+
+                <form th:action="@{/order-form}" method="get">
+                    <input type="hidden" th:name="carId" th:value="${car.id}"/>
+                    <button type="submit">Book this car</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+
+</section>
 
 <div th:if="${noCarsAvailable}" th:script="javascript:showNoCarsPopup()"></div>
 
