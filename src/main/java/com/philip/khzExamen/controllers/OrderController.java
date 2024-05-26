@@ -58,7 +58,7 @@ public class OrderController {
     ) {
         // Check for validation errors
         if (result.hasErrors()) {
-            return "order"; // Return the same view to display validation errors
+            return "order";
         }
 
         // Save the order with the user association
@@ -75,6 +75,16 @@ public class OrderController {
         model.addAttribute("orderEntity", new OrderEntity());
         return "order-page";
     }
+    @GetMapping("/create")
+    public String showCreateOrderForm(Model model, Long carId) {
+        OrderEntity order = new OrderEntity();
+
+        model.addAttribute("order", new OrderEntity());
+        return "order-form"; // Name of the Thymeleaf template
+    }
+
+
+
 
 
 

@@ -4,33 +4,29 @@
     <meta charset="UTF-8">
     <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
 
-    <title>Edit Task</title>
+    <title>Edit Car</title>
 </head>
 
 <body class="crt">
 <h1>Edit Car</h1>
-<form th:action="@{/save-edit-task}" method="post">
-    <!-- Hidden field to hold the task ID -->
-    <label>Enter Id of the task you want to edit: </label>
+<form th:action="@{/save-edit-car}" method="post">
+    <label>Enter Id of the car you want to edit: </label>
     <br>
-    <input class="command" type="text" th:name="carsId" th:value="${carId}" placeholder="enter id.."/>
+    <input class="command" type="text" th:name="carId" th:value="${carId}" placeholder="enter id.."/>
     <br>
 
-    <!-- Input field for the task title -->
-    <label>Title:</label>
+    <label>Brand:</label>
     <br>
-    <input class="command" type="text" th:name="title" th:value="${carBrand}" placeholder="add new brand.."/>
+    <input class="command" type="text" th:name="carBrand" th:value="${carBrand}" placeholder="add new brand.."/>
     <br/>
 
-    <!-- Textarea for the task description -->
-    <label>Description:</label>
+    <label>Model:</label>
     <br>
 
-    <input class="command" th:name="description" th:text="${carModel}" placeholder="enter model.."/>
+    <input class="command" th:name="carModel" th:text="${carModel}" placeholder="enter model.."/>
 
     <br/>
 
-    <!-- Button to submit the form -->
     <button class="postTodo" type="submit">Save Changes</button>
 
     <!--    <div id="postDiv">-->
@@ -40,7 +36,7 @@
 
 </form>
 <br>,
-<a class="postTodo" th:href="@{/}"> < </a>
+<a class="postTodo" th:href="@{/save-edit-car}"></a>
 
 </body>
 </html>

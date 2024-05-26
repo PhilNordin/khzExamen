@@ -15,7 +15,7 @@ public class CalendarController {
         LocalDate today = LocalDate.now();
         LocalDate firstDayOfMonth = today.withDayOfMonth(1);
         int daysInMonth = today.lengthOfMonth();
-        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue(); // 1 = Monday, 7 = Sunday
+        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue();
 
         List<List<Day>> weeks = new ArrayList<>();
         List<Day> week = new ArrayList<>();

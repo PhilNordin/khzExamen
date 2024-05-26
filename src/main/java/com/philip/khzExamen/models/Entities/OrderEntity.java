@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-public class OrderEntity {
+public class OrderEntity extends CustomerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,18 +19,22 @@ public class OrderEntity {
     private CustomerEntity customer;
 
     @ManyToOne
-    @JoinColumn(name = "users_id")
+    @JoinColumn(name = "user_id")
     private UserEntity user;
 
     private LocalDate startDate;
     private LocalDate endDate;
     private float totalPrice;
     private boolean active;
+    private String customerName;
+    private String customerEmail;
 
-    // Default
-    public OrderEntity() {}
+    public OrderEntity() {
+        // Default constructor
+    }
 
-    public OrderEntity(CarEntity car, CustomerEntity customer, UserEntity user, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
+    public OrderEntity(Long id, CarEntity car, CustomerEntity customer, UserEntity user, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active, String customerName, String customerEmail) {
+        this.id = id;
         this.car = car;
         this.customer = customer;
         this.user = user;
@@ -38,6 +42,8 @@ public class OrderEntity {
         this.endDate = endDate;
         this.totalPrice = totalPrice;
         this.active = active;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
     }
 
     public long getId() {
@@ -84,19 +90,24 @@ public class OrderEntity {
         return active;
     }
 
-    public OrderEntity(long id, CarEntity car, CustomerEntity customer, UserEntity user, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active) {
-        this.id = id;
-        this.car = car;
-        this.customer = customer;
-        this.user = user;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.totalPrice = totalPrice;
+    public void setActive(boolean active) {
         this.active = active;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     public CustomerEntity getCustomer() {
@@ -114,8 +125,4 @@ public class OrderEntity {
     public void setUser(UserEntity user) {
         this.user = user;
     }
-
-
-
-
 }

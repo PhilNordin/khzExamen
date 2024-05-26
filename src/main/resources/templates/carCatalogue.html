@@ -4,63 +4,45 @@
     <meta charset="UTF-8">
     <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
     <link th:href="@{static/stylesheet/lightbox.css}" rel="stylesheet" />
-    <title>Car catalogue</title>
+    <title>Car Catalogue</title>
 </head>
 <body>
-<h1>Car catalogue</h1>
-<div class="grid-container">
-    <!-- Iterate through list of cars -->
-    <div class="card" th:each="car : ${cars}">
+<h1>Car Catalogue</h1>
+<section class="form-section">
 
-        <img th:src="${car.image}" alt="Car Image" style="max-width: 100%; max-height: 300px;">
+    <div th:if="${not #lists.isEmpty(cars)}">
 
-        <div class="card-content">
-            <table>
-                <tr>
-                    <th>Car ID:</th>
-                    <td th:text="${car.id}"></td>
-                </tr>
-                <tr>
-                    <th>Brand:</th>
-                    <td th:text="${car.brand}"></td>
-                </tr>
-                <tr>
-                    <th>Model:</th>
-                    <td th:text="${car.model}"></td>
-                </tr>
-                <tr>
-                    <th>Year:</th>
-                    <td th:text="${car.year}"></td>
-                </tr>
-                <tr>
-                    <th>Color:</th>
-                    <td th:text="${car.color}"></td>
-                </tr>
-                <tr>
-                    <th>Mileage:</th>
-                    <td th:text="${car.mileage}"></td>
-                </tr>
-                <tr>
-                    <th>Terrain:</th>
-                    <td th:text="${car.terrain}"></td>
-                </tr>
-            </table>
-        </div>
-        <div class="card-actions">
-            <a th:href="@{/edit-car(carId=${car.id})}">Edit Car</a>
-        </div>
+        <ul class="carCards">
+            <li th:each="car : ${cars}">
+                <img th:src="${car.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;">
+                <p>Car brand:</p>
+                <span th:text="${car.brand}"></span>
+                <p>Car model:</p>
+                <span th:text="${car.model}"></span>
+                <p>Car color:</p>
+                <span th:text="${car.color}"></span>
+                <p>Car year:</p>
+                <span th:text="${car.year}"></span>
+                <p>Car mileage:</p>
+                <span th:text="${car.mileage}"></span>
+                <p>Car terrain:</p>
+                <span th:text="${car.terrain}"></span>
+
+                <a class="editButton" th:href="@{/edit-car(carId=${car.id})}">Edit Car</a>
+
+                <!-- Order Form -->
+                <form th:action="@{/submit-order}" method="post">
+                    <input type="hidden" name="carId" th:value="${car.id}" />
+                    <label for="customerName">Name:</label>
+                    <input type="text" id="customerName" name="customerName" required />
+                    <label for="customerEmail">Email:</label>
+                    <input type="email" id="customerEmail" name="customerEmail" required />
+                    <button type="submit">Purchase</button>
+                </form>
+            </li>
+        </ul>
     </div>
-</div>
 
-<ul>
-    <li>
-        <a class="" th:href="@{/create-order}">create order</a>
-    </li>
-
-</ul>
-
-<br>
-<a class="postTodo" th:href="@{/}"> < </a>
-<script th:src="@{static/stylesheet/lightbox.js}"></script>
+</section>
 </body>
 </html>

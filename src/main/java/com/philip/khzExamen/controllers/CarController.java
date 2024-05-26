@@ -1,14 +1,15 @@
 package com.philip.khzExamen.controllers;
 
 import com.philip.khzExamen.models.Entities.CarEntity;
+import com.philip.khzExamen.models.Entities.OrderEntity; // Assuming you have an OrderEntity class
 import com.philip.khzExamen.repositories.CarRepository;
+import com.philip.khzExamen.repositories.OrderRepository; // Assuming you have an OrderRepository
 import com.philip.khzExamen.service.CarSortingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
@@ -18,25 +19,22 @@ import java.util.List;
 public class CarController {
     private final CarRepository carRepository;
     private final CarSortingService carSortingService;
+    private final OrderRepository orderRepository;
 
     @Autowired
-    public CarController(CarRepository carRepository, CarSortingService carSortingService) {
+    public CarController(CarRepository carRepository, CarSortingService carSortingService, OrderRepository orderRepository) {
         this.carRepository = carRepository;
         this.carSortingService = carSortingService;
+        this.orderRepository = orderRepository;
     }
 
     @PostMapping("/submit-rental")
     public String checkAvailability(@RequestParam("startDate") String startDate,
                                     @RequestParam("endDate") String endDate,
-                                    // @RequestParam("pickup_city") String pickupCity,  // Uncomment for use of location choice
-                                    // @RequestParam("return_city") String returnCity,  // Uncomment for use of location choice
                                     Model model) {
-
         LocalDate start = LocalDate.parse(startDate);
         LocalDate end = LocalDate.parse(endDate);
-        // int location = mapCityToLocation(pickupCity); // Implement this method to map city names to location IDs
 
-        // List<CarEntity> availableCars = carSortingService.checkAvailability(start, end, location);  // Uncomment for use of location choice
         List<CarEntity> availableCars = carSortingService.checkAvailability(start, end);
 
         if (availableCars.isEmpty()) {
@@ -45,10 +43,8 @@ public class CarController {
         }
 
         model.addAttribute("availableCars", availableCars);
-
         return "available-cars";
     }
-
 
     @GetMapping("/order-form")
     public String showOrderForm(@RequestParam("carId") Long carId, Model model) {
@@ -70,26 +66,18 @@ public class CarController {
             return "error-page"; // Handle car not found
         }
 
-        //databas
+        // Save order to database
+        OrderEntity order = new OrderEntity();
+        order.setCar(car); // Assuming OrderEntity has a reference to CarEntity
+        order.setCustomerName(customerName);
+        order.setCustomerEmail(customerEmail);
+        orderRepository.save(order);
 
         model.addAttribute("car", car);
         model.addAttribute("customerName", customerName);
+        model.addAttribute("customerEmail", customerEmail);
         return "order-success";
     }
-
-
-//    private int mapCityToLocation(String city) {
-//        switch (city.toLowerCase()) {
-//            case "stockholm":
-//                return 1;
-//            case "malmo":
-//                return 2;
-//            case "goteborg":
-//                return 3;
-//            default:
-//                throw new IllegalArgumentException("Unknown city: " + city);
-//        }
-//    }
 
     @GetMapping("/cars")
     public String getAllCars(Model model) {
@@ -99,17 +87,27 @@ public class CarController {
         return "carCatalogue";
     }
 
-    @GetMapping("/edit-car")
-    public String showEditTaskPage(
-            @RequestParam("carId")
-            Long carId,
-            Model model)
-    {
+    @PostMapping("/save-edit-car")
+    public String saveCar(@RequestParam("carId") Long carId,
+                          @RequestParam("carBrand") String carBrand,
+                          @RequestParam("carModel") String carModel) {
+        CarEntity car = carRepository.findById(carId).orElse(null);
+        if (car == null) {
+            return "error-page";
+        }
 
+        car.setBrand(carBrand);
+        car.setModel(carModel);
+        carRepository.save(car);
+
+        return "redirect:/cars";
+    }
+
+    @GetMapping("/edit-car")
+    public String showEditTaskPage(@RequestParam("carId") Long carId, Model model) {
         CarEntity car = carRepository.findById(carId).orElse(null);
 
         if (car == null) {
-            // Handle task not found error
             return "error-page";
         }
 
@@ -119,24 +117,4 @@ public class CarController {
 
         return "edit-car";
     }
-
-    @PutMapping("/edit-car")
-    public String saveCar(
-            @RequestParam("carId") Long carId,
-            @RequestParam("title") String title,
-            @RequestParam("description") String description)
-    {
-
-        CarEntity car = carRepository.findById(carId).orElse(null);
-        if (car == null) {
-            return "error-page";
-        }
-
-        car.setBrand(title);
-        car.setDescription(description);
-        carRepository.save(car);
-
-        return "redirect:/cars";
-    }
-
 }
