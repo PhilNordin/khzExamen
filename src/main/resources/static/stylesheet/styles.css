@@ -207,10 +207,10 @@ ul {
     width: 100vw;
     list-style: none;
     padding: 0;
-    margin: 0;
+    padding-left: 4vw;
+    padding-top: 4vh;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-row: 5;
     gap: 20px;
     font-size: 16px;
     line-height: 1.6;

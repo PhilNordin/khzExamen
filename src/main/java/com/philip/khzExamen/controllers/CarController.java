@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
@@ -77,18 +78,18 @@ public class CarController {
     }
 
 
-    private int mapCityToLocation(String city) {
-        switch (city.toLowerCase()) {
-            case "stockholm":
-                return 1;
-            case "malmo":
-                return 2;
-            case "goteborg":
-                return 3;
-            default:
-                throw new IllegalArgumentException("Unknown city: " + city);
-        }
-    }
+//    private int mapCityToLocation(String city) {
+//        switch (city.toLowerCase()) {
+//            case "stockholm":
+//                return 1;
+//            case "malmo":
+//                return 2;
+//            case "goteborg":
+//                return 3;
+//            default:
+//                throw new IllegalArgumentException("Unknown city: " + city);
+//        }
+//    }
 
     @GetMapping("/cars")
     public String getAllCars(Model model) {
@@ -119,7 +120,7 @@ public class CarController {
         return "edit-car";
     }
 
-    @PostMapping("/edit-car")
+    @PutMapping("/edit-car")
     public String saveCar(
             @RequestParam("carId") Long carId,
             @RequestParam("title") String title,
