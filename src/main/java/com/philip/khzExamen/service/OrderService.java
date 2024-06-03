@@ -14,18 +14,6 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public void createOrder(String customerName, String customerEmail) {
-        // Here, you would create an OrderEntity object and save it to the database using orderRepository
-        // Construct the OrderEntity object with the provided data
-        OrderEntity order = new OrderEntity();
-        CustomerEntity customer = new CustomerEntity();
-        // Set properties of the order object
-
-
-        order.setId(order.getId());
-        // Save the order to the database
-        orderRepository.save(order);
-    }
 
     @PostMapping("/save-order")
     public String saveOrder(

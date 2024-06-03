@@ -44,6 +44,9 @@ public class AppSecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/", "/hash", "/register", "/api/user").permitAll()
                         .requestMatchers("/home-page").hasRole(ADMIN.name())
+                        .requestMatchers("/cars").hasRole(ADMIN.name())
+                        .requestMatchers("/customers").hasRole(ADMIN.name())
+
                         .anyRequest().permitAll()
                 )
 

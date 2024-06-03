@@ -4,16 +4,30 @@
   <meta charset="UTF-8">
   <title>Order Success</title>
   <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
-  <script>
-    setTimeout(function() {
-      window.location.href = "/";
-    }, 3000);
-  </script>
+
 </head>
 <body>
 
 <h1>Order Successful</h1>
 <p>Thank you, <span th:text="${customerName}"></span>, for ordering the <span th:text="${car.brand} + ' ' + ${car.model}"></span>.</p>
 <p>We will contact you soon at <span th:text="${customerEmail}"></span> with further details.</p>
+
+<div th:if="${not #lists.isEmpty(availableCars)}">
+
+  <h1>Your booking: </h1>
+
+  <ul class="carCards">
+    <li th:each="car : ${availableCars}">
+      <img th:src="${car.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;">
+      <p>Car brand:</p>
+      <span th:text="${car.brand}"></span>
+      <p>Car model:</p>
+      <span th:text="${car.model}"></span>
+      <p>Car color:</p>
+      <span th:text="${car.color}"></span>
+
+    </li>
+  </ul>
+</div>
 </body>
 </html>

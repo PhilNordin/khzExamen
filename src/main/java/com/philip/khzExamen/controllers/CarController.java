@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -60,17 +61,36 @@ public class CarController {
     public String submitOrder(@RequestParam("carId") Long carId,
                               @RequestParam("customerName") String customerName,
                               @RequestParam("customerEmail") String customerEmail,
+                              @RequestParam("address") String address,
+                              @RequestParam("firstName") String firstName,
+                              @RequestParam("lastName") String lastName,
+                              @RequestParam("gender") String gender,
+                              @RequestParam("personalNumber") String personalNumber,
+                              @RequestParam("phoneNumber") String phoneNumber,
+                              @RequestParam("startDate") String startDateStr,
+                              @RequestParam("endDate") String endDateStr,
                               Model model) {
         CarEntity car = carRepository.findById(carId).orElse(null);
         if (car == null) {
             return "error-page"; // Handle car not found
         }
 
+        LocalDateTime startDate = LocalDateTime.parse(startDateStr);
+        LocalDateTime endDate = LocalDateTime.parse(endDateStr);
+
         // Save order to database
         OrderEntity order = new OrderEntity();
-        order.setCar(car); // Assuming OrderEntity has a reference to CarEntity
+        order.setCar(car);
         order.setCustomerName(customerName);
         order.setCustomerEmail(customerEmail);
+        order.setAddress(address);
+        order.setFirstName(firstName);
+        order.setLastName(lastName);
+        order.setGender(gender);
+        order.setPersonalNumber(personalNumber);
+        order.setPhoneNumber(phoneNumber);
+        order.setStartDate(startDate);
+        order.setEndDate(endDate);
         orderRepository.save(order);
 
         model.addAttribute("car", car);
@@ -78,6 +98,7 @@ public class CarController {
         model.addAttribute("customerEmail", customerEmail);
         return "order-success";
     }
+
 
     @GetMapping("/cars")
     public String getAllCars(Model model) {

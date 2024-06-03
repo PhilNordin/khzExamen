@@ -163,11 +163,14 @@ button {
     margin-left: 10px;
     cursor: pointer;
     border-radius: 4px;
+    align-self:center;
 }
 
 input {
     font-size: larger;
     text-align: center;
+    padding: 5px;
+    border-radius: 25px;
 }
 
 button:hover {
@@ -246,13 +249,7 @@ li {
     vertical-align: middle;
 }
 
-    img:not(.khzlogo) {
-      transition: transform 0.1s ease-in; 
-    }
 
-    img:not(.khzlogo):hover {
-      transform: scale(1.2);
-    }
 
 @media only screen and (max-width: 1200px) {
     .navbar {

@@ -3,6 +3,7 @@ package com.philip.khzExamen.models.Entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class OrderEntity extends CustomerEntity {
@@ -22,8 +23,8 @@ public class OrderEntity extends CustomerEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private float totalPrice;
     private boolean active;
     private String customerName;
@@ -33,7 +34,7 @@ public class OrderEntity extends CustomerEntity {
         // Default constructor
     }
 
-    public OrderEntity(Long id, CarEntity car, CustomerEntity customer, UserEntity user, LocalDate startDate, LocalDate endDate, float totalPrice, boolean active, String customerName, String customerEmail) {
+    public OrderEntity(Long id, CarEntity car, CustomerEntity customer, UserEntity user, LocalDateTime startDate, LocalDateTime endDate, float totalPrice, boolean active, String customerName, String customerEmail) {
         this.id = id;
         this.car = car;
         this.customer = customer;
@@ -44,6 +45,22 @@ public class OrderEntity extends CustomerEntity {
         this.active = active;
         this.customerName = customerName;
         this.customerEmail = customerEmail;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
     public long getId() {
@@ -62,21 +79,8 @@ public class OrderEntity extends CustomerEntity {
         this.car = car;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
 
     public float getTotalPrice() {
         return totalPrice;

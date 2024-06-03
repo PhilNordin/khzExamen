@@ -47,10 +47,10 @@ public class OrderController {
 
         model.addAttribute("userOrders", userOrders); // Update attribute name
 
-        return "order-page"; // Update the view name
+        return "order-page";
     }
 
-    @GetMapping("/create-order")
+    @GetMapping("/create-user")
     public String registerUser(
             @Valid OrderEntity order,   // @Valid annotation to enable validation
             BindingResult result,     // BindingResult parameter immediately following @Valid parameter
