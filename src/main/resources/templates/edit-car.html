@@ -2,39 +2,47 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
+
 
     <title>Edit Car</title>
 </head>
 
-<body class="crt">
+<body>
 <h1>Edit Car</h1>
-<form th:action="@{/save-edit-car}" method="post">
-    <label>Enter Id of the car you want to edit: </label>
-    <br>
-    <input class="command" type="text" th:name="carId" th:value="${carId}" placeholder="enter id.."/>
-    <br>
+<section class="section-form">
 
-    <label>Brand:</label>
-    <br>
-    <input class="command" type="text" th:name="carBrand" th:value="${carBrand}" placeholder="add new brand.."/>
-    <br/>
+          <form th:action="@{/edit-car}" method="post">
+                <label>Enter Id of the car you want to edit: </label>
+                <br>
+                <input class="command" type="text" th:name="carId" th:value="${carId}" placeholder="enter id.."/>
+                <br>
 
-    <label>Model:</label>
-    <br>
+                <label>Brand:</label>
+                <br>
+                <input class="command" type="text" th:name="carBrand" th:value="${carBrand}" placeholder="add new brand.."/>
+                <br/>
 
-    <input class="command" th:name="carModel" th:text="${carModel}" placeholder="enter model.."/>
+                <label>Model:</label>
+                <br>
 
-    <br/>
+                <input class="command" type="text" th:name="carModel" th:value="${carModel}" placeholder="enter model.."/>
 
-    <button class="postTodo" type="submit">Save Changes</button>
+                <br/>
 
-    <!--    <div id="postDiv">-->
-    <!--        <span class="postTodo" type="submit">Save changes</span>-->
+                <button class="postTodo" type="submit">Save Changes</button>
 
-    <!--    </div>-->
+                <!--    <div id="postDiv">-->
+                <!--        <span class="postTodo" type="submit">Save changes</span>-->
 
-</form>
+                <!--    </div>-->
+
+            </form>
+
+
+
+</section>
+
 <br>,
 <a class="postTodo" th:href="@{/save-edit-car}"></a>
 

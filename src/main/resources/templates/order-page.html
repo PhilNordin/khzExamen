@@ -7,34 +7,31 @@
     <title>Order overview</title>
 </head>
 <body>
-<h1>Order overview</h1>
-<table>
-    <thead>
+<nav class="navbar">
+    <h2>Bookings</h2>
+    <a href="/">
+        <img src="../static/images/khzlogo.PNG" th:href="@{/}" class="khzlogo" alt="">
+    </a>
+</nav>
+<section class="form-section">
 
-    </thead>
+<table class="order-table">
+
     <tbody class="table">
 
     <!-- Iterate through list of cars-->
     <tr class="grid-item" th:each="orders : ${orders}">
-<!--        <td><img th:src="${cars.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;"></td>-->
 
         <th>Order ID:</th>
-<!--        <td th:text="${order.id}"></td>-->
         <th>Start date:</th>
         <td th:text="${orders.startDate}"></td>
         <th>End date:</th>
         <td th:text="${orders.endDate}"></td>
+        <th>Customer name:</th>
+        <td th:value="${orders.customerName}"></td>
+        <th>Customer email:</th>
+        <td th:value="${orders.customerEmail}"></td>
 
-<!--        <th>Model:</th>-->
-<!--        <td th:text="${order.model}"></td>-->
-<!--        <th>Year:</th>-->
-<!--        <td th:text="${order.year}"></td>-->
-<!--        <th>Color:</th>-->
-<!--        <td th:text="${cars.color}"></td>-->
-<!--        <th>Mileage:</th>-->
-<!--        <td th:text="${cars.mileage}"></td>-->
-<!--        <th>Terrain:</th>-->
-<!--        <td th:text="${cars.terrain}"></td>-->
 
 
         <td>
@@ -44,7 +41,7 @@
     </tbody>
 
 </table>
-
+</section>
 
 
 <br>

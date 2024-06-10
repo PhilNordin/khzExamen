@@ -59,12 +59,12 @@ public class CarController {
 
     @PostMapping("/submit-order")
     public String submitOrder(@RequestParam("carId") Long carId,
-                              @RequestParam("customerName") String customerName,
+//                              @RequestParam("customerName") String customerName,
                               @RequestParam("customerEmail") String customerEmail,
                               @RequestParam("address") String address,
                               @RequestParam("firstName") String firstName,
                               @RequestParam("lastName") String lastName,
-                              @RequestParam("gender") String gender,
+//                              @RequestParam("gender") String gender,
                               @RequestParam("personalNumber") String personalNumber,
                               @RequestParam("phoneNumber") String phoneNumber,
                               @RequestParam("startDate") String startDateStr,
@@ -81,12 +81,12 @@ public class CarController {
         // Save order to database
         OrderEntity order = new OrderEntity();
         order.setCar(car);
-        order.setCustomerName(customerName);
+//        order.setCustomerName(customerName);
         order.setCustomerEmail(customerEmail);
         order.setAddress(address);
         order.setFirstName(firstName);
         order.setLastName(lastName);
-        order.setGender(gender);
+//        order.setGender(gender);
         order.setPersonalNumber(personalNumber);
         order.setPhoneNumber(phoneNumber);
         order.setStartDate(startDate);
@@ -94,7 +94,7 @@ public class CarController {
         orderRepository.save(order);
 
         model.addAttribute("car", car);
-        model.addAttribute("customerName", customerName);
+        model.addAttribute("customerName", firstName);
         model.addAttribute("customerEmail", customerEmail);
         return "order-success";
     }
@@ -108,7 +108,7 @@ public class CarController {
         return "carCatalogue";
     }
 
-    @PostMapping("/save-edit-car")
+    @PostMapping("/edit-car")
     public String saveCar(@RequestParam("carId") Long carId,
                           @RequestParam("carBrand") String carBrand,
                           @RequestParam("carModel") String carModel) {

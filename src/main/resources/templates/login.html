@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>login</title>
-  <link th:href="@{static/styles/styles.css}" rel="stylesheet" />
-  <script th:src="@{static/js/script.js}"></script>
-</head>
-<body class="crt">
-  <h1>Login</h1>
+  <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
 
-<section class="login-top">
-  <br>
+</head>
+<nav class="navbar">
+  <a href="/">
+    <img src="../static/images/khzlogo.PNG" th:href="@{/}" class="khzlogo" alt="">
+  </a>
+</nav>
+<body>
+
+<section class="form-section">
   <form th:action="@{/login}" method="post">
 
       <!-- name=""  Is VERY important... -->
@@ -31,7 +34,6 @@
 <br>
 <section>
   <br>
-<a class="postTodo" th:href="@{/}"> < </a>
 
 </section>
 

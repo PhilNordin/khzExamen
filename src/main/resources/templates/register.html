@@ -4,50 +4,44 @@
     <meta charset="UTF-8">
     <title>Register</title>
     <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
+
 </head>
+
 <body>
-<nav class="navbar">
-    <img src="../static/images/khzlogo.PNG"   class="khzlogo" alt="">
-    <ul class="nav-list">
-        <li>
-            <a th:href="@{/register}">register</a>
-        </li>
-        <li>
-            <a th:href="@{/login}">login</a>
-        </li>
-    </ul>
-</nav>
-<section class="regform-section">
-    <div class="regform-container">
-        <h1>Register new user</h1>
-        <form method="post" th:action="@{/register}" th:object="${userEntity}">
-            <label for="username">Username:</label>
-            <input class="command" type="text" th:field="*{username}" placeholder="username..." id="username" autofocus>
-            <br>
-            <label for="password">Password:</label>
-            <input class="command" type="password" th:field="*{password}" placeholder="password..." id="password">
-            <br>
-            <label for="roles">Select role:</label>
-            <select class="post" id="roles" name="roles" th:field="*{role}">
-                <option class="post" th:each="role : ${roles}" th:value="${role.name()}" th:text="${role.name()}"></option>
-            </select>
-            <button class="post" type="submit">Register</button>
+<h1>Register</h1>
 
-            <!-- Display success message -->
-            <p th:if="${successMessage}" th:text="${successMessage}" class="success-message"></p>
+    <form method="post" th:action="@{/register}" th:object="${userEntity}">
+        <label for="username">Username:</label>
+        <input class="command" type="text" th:field="*{username}" placeholder="username..." id="username" autofocus>
+        <br>
+        <label for="password">Password:</label>
+        <input class="command" type="password" th:field="*{password}" placeholder="password..." id="password">
+        <br>
+        <label for="roles">Select role:</label>
+        <select class="post" id="roles" name="roles" th:field="*{role}">
+            <option class="post" th:each="role : ${roles}" th:value="${role.name()}" th:text="${role.name()}"></option>
+        </select>
+        <button type="submit">Register</button>
 
-            <!-- Display form errors -->
-            <p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}"></p>
+        <!-- Display success message -->
+        <p th:if="${successMessage}" th:text="${successMessage}" class="success-message"></p>
+
+        <!-- Display form errors -->
+        <p th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}"></p>
+        <ul>
+            <li th:each="error : ${#fields.errors('password')}" th:text="${error}" class="error"></li>
+        </ul>
+        <div th:if="${#fields.hasAnyErrors()}">
             <ul>
-                <li th:each="error : ${#fields.errors('password')}" th:text="${error}" class="error"></li>
+                <li th:each="error : ${#fields.allErrors()}" th:text="${error}"></li>
             </ul>
-            <div th:if="${#fields.hasAnyErrors()}">
-                <ul>
-                    <li th:each="error : ${#fields.allErrors()}" th:text="${error}"></li>
-                </ul>
-            </div>
-        </form>
-    </div>
-</section>
+        </div>
+    </form>
+    <br>
+<br>
+    <br>
+
+
 </body>
 </html>
+

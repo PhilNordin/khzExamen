@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Available Cars</title>
     <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
-    <script src="../static/scripts.js"></script>
+
 </head>
 <body>
 <nav class="navbar">
     <h2>AVAILABLE CARS</h2>
+
     <a href="/">
         <img src="../static/images/khzlogo.PNG" th:href="@{/}" class="khzlogo" alt="">
     </a>
@@ -17,7 +18,7 @@
 <section class="form-section">
     <div th:if="${not #lists.isEmpty(availableCars)}">
         <ul class="carCards">
-            <li th:each="car : ${availableCars}">
+            <li class="car-li" th:each="car : ${availableCars}">
                 <img th:src="${car.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;">
                 <p>Car brand:</p>
                 <span th:text="${car.brand}"></span>
@@ -26,40 +27,49 @@
                 <p>Car color:</p>
                 <span th:text="${car.color}"></span>
 
-                <!-- Order Form -->
-                <form th:action="@{/submit-order}" method="post">
-                    <input type="hidden" name="carId" th:value="${car.id}" />
-
-                    <label for="customerName">Name:</label>
-                    <input type="text" id="customerName" name="customerName" required />
-                    <label for="customerEmail">Email:</label>
-                    <input type="email" id="customerEmail" name="customerEmail" required />
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address" required />
-                    <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required />
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required />
-                    <label for="gender">Gender:</label>
-                    <input type="text" id="gender" name="gender" required />
-                    <label for="personalNumber">Personal Number:</label>
-                    <input type="text" id="personalNumber" name="personalNumber" required />
-                    <label for="phoneNumber">Phone Number:</label>
-                    <input type="text" id="phoneNumber" name="phoneNumber" required />
-
-                    <label for="startDate">Start Date:</label>
-                    <input type="datetime-local" id="startDate" name="startDate" required />
-                    <label for="endDate">End Date:</label>
-                    <input type="datetime-local" id="endDate" name="endDate" required />
-
-                    <button type="submit">Book this car</button>
-                </form>
+                <!-- Order Button -->
+                <button th:onclick="'openModal(' + ${car.id} + ')'">Book this car</button>
             </li>
         </ul>
     </div>
 </section>
 
+<!-- The Modal -->
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <form th:action="@{/submit-order}" method="post">
+            <input type="hidden" name="carId" id="carId" />
+            <div class="form">
+                    <input type="hidden" id="customerName" name="customerName" required />
+                    <input type="hidden" id="customerEmail" name="customerEmail" required />
+
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required />
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required />
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required />
+                    <label for="personalNumber">Personal Number:</label>
+                    <input type="text" id="personalNumber" name="personalNumber" required />
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" required />
+                    <label for="startDate">Start Date:</label>
+                    <input type="datetime-local" id="startDate" name="startDate" required />
+                    <label for="endDate">End Date:</label>
+                    <input type="datetime-local" id="endDate" name="endDate" required />
+                    <button type="submit">Submit Order</button>
+
+            </div>
+        </form>
+        <span class="close" onclick="closeModal()">&times;</span>
+
+    </div>
+</div>
+
+
+
 <div th:if="${noCarsAvailable}" th:script="javascript:showNoCarsPopup()"></div>
+<script src="../static/scripts.js"></script>
 
 </body>
 </html>

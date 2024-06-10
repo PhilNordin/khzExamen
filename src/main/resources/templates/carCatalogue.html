@@ -2,18 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
-    <link th:href="@{static/stylesheet/lightbox.css}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet/styles.css">
+
+
     <title>Car Catalogue</title>
 </head>
 <body>
-<h1>Car Catalogue</h1>
+<nav class="navbar">
+    <h2>Car catalogue</h2>
+
+    <a href="/">
+        <img src="../static/images/khzlogo.PNG" th:href="@{/}" class="khzlogo" alt="">
+    </a>
+</nav>
+
 <section class="form-section">
 
     <div th:if="${not #lists.isEmpty(cars)}">
         <ul class="carCards">
-            <li th:each="car : ${cars}">
+            <li class="car-li" th:each="car : ${cars}">
                 <img th:src="${car.image}" alt="Car Image" style="max-width: 600px; max-height: 300px;">
+                <p>Car ID:</p>
+                <span th:text="${car.id}"></span>
                 <p>Car brand:</p>
                 <span th:text="${car.brand}"></span>
                 <p>Car model:</p>
@@ -27,7 +37,7 @@
                 <p>Car terrain:</p>
                 <span th:text="${car.terrain}"></span>
 
-                <a class="editButton" th:href="@{/edit-car(carId=${car.id})}">Edit Car</a>
+                <a class="button" th:href="@{/edit-car(carId=${car.id})}">Edit Car</a>
 
 
             </li>

@@ -4,58 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link th:href="@{static/stylesheet/admin-styles.css}" rel="stylesheet" />
+    <link th:href="@{static/stylesheet/styles.css}" rel="stylesheet" />
     <script th:src="@{static/js/script.js}"></script>
 
     <title>Admin</title>
 </head>
-<body class="crt">
-<h1>Order list</h1>
-<table class="taskTable">
-    <thead class="table">
-    <tr>
-        <th>Order id</th>
-        <th>Car id</th>
-        <th>Start date</th>
-        <th>End date</th>
-    </tr>
-    <br>
-    </thead>
-    <br>
-    <tbody class ="tableBody">
+<body>
+<nav class="navbar">
+    <h2>Admin Dashboard</h2>
 
-    <!-- Iterate through the list of tasks -->
-    <tr th:each="order : ${OrderEntity}">
-        <!-- Access Order properties -->
-        <td class="cellStyle" th:text="${order.id}"></td>
-        <td class="cellStyle" th:text="${order.car_id}"></td>
-        <td class="cellStyle" th:text="${order.start_date}"></td>
-        <td class="cellStyle" th:text="${order.end_date}"></td>
-        <!-- Add a button to edit the task -->
-        <td class="editCell">
 
-            <a id="editButton" th:href="@{/edit-task(taskId=${task.id})}">edit</a>
-            <a id="removeButton" th:href="@{/delete-task(taskId=${task.id})}">x</a>
-        </td>
-    </tr>
+    <a href="/">
+        <img src="../static/images/khzlogo.PNG" th:href="@{/}" class="khzlogo" alt="">
+    </a>
+    <ul class="nav-list">
+        <li><a th:href="@{/register}">Register</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+        <li><a th:href="@{/cars}">Cars</a></li>
+        <li><a th:href="@{/orders}">Orders</a></li>
+    </ul>
+</nav>
 
-    <tr th:if="${#lists.isEmpty(userOrders)}">
-        <br>
-        <td colspan="3">No order found</td>
-    </tr>
-    </tbody>
-</table>
-<ul>
-    <li>
-        <a class="" th:href="@{/create-order}">Create order</a>
-    </li>
-        <li>
-            <a class="" th:href="@{/edit-order}">edit order</a>
-        </li>
-</ul>
-
-<br>
-<a class="postTodo" th:href="@{/home}"></a>
 
 </body>
 </html>
